@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: 'Raleway';
+		-webkit-font-smoothing: antialiased; /* Smoothing improvement */
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-overflow-scrolling: touch;
+	}
+	body {
+		@apply bg-green-900 text-white tracking-2;
+		font-size: 16px;
+		line-height: 29px;
+		-webkit-overflow-scrolling: touch;
+	}
+	@media screen and (max-width: 640px) {
+		p {
+			font-size: 14px;
+			line-height: 19.6px;
+		}
+	}
+	@font-face {
+		font-family: 'BetaSansNorm Regular';
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src:
+			url('./fonts/BetaSansNorm Regular.otf') format('opentype'),
+			url('./fonts/BetaSansNorm Regular.woff') format('woff'),
+			url('./fonts/BetaSansNorm Regular.woff2') format('woff2');
+	}
+	@font-face {
+		font-family: 'Jonathan Regular';
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src:
+			url('./fonts/Jonathan Regular.otf') format('opentype'),
+			url('./fonts/Jonathan Regular.woff') format('woff'),
+			url('./fonts/Jonathan Regular.woff2') format('woff2');
+	}
+}
+
+.animate__fadeInAndSlideInUp {
+	animation:
+		fadeIn 0.4s,
+		slideInUp 0.5s;
+	animation-fill-mode: forwards;
+}
