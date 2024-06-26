@@ -7,22 +7,26 @@ module.exports = {
 	content: ['./**/*.{html,js}'],
 	theme: {
 		screens: {
-			...defaultTheme.screens,
-			md: '790px', // tables
 			xs: '480px', // phones
+			md: '790px', // tables
+			xxl: '1400px', // laptops
+			'3xl': '1560px', // laptops
+			...defaultTheme.screens,
 		},
 		container: {
 			center: true,
 			padding: {
-				default: '1.25rem', // 20px
-				'2xl': '0px',
+				DEFAULT: '20px',
+				sm: '15px',
+				xl: '20px',
+				'2xl': '0',
 			},
 			screens: {
 				'2xl': '1300px',
 			},
 		},
 		fontFamily: {
-			betaSansReg: ['"BetaSansNorm Regular"', ...defaultTheme.fontFamily.sans],
+			betaSansReg: ['BetaSans-Normal', ...defaultTheme.fontFamily.sans],
 			jonathanReg: ['"Jonathan Regular"', ...defaultTheme.fontFamily.sans],
 			raleway: ['Raleway', ...defaultTheme.fontFamily.sans],
 			sans: defaultTheme.fontFamily.sans,
@@ -31,6 +35,7 @@ module.exports = {
 			white: colors.white,
 			black: colors.black,
 			primary: {
+				400: '#c9ab81',
 				500: '#A78963',
 			},
 			green: {
@@ -47,8 +52,9 @@ module.exports = {
 				'6xl': ['3.875rem', '2.25rem'], // 62px 36px
 			},
 			letterSpacing: {
-				2.4: '2.4px',
 				2: '2px',
+				2.4: '2.4px',
+				6: '6px',
 			},
 			spacing: {
 				4.5: '1.125rem', // 18px
@@ -85,6 +91,7 @@ module.exports = {
 					lineHeight: '2em',
 					padding: '0 2.4375rem',
 					color: theme('colors.primary[500]'),
+					fontFamily: theme('fontFamily.betaSansReg'),
 					gap: '0.5rem',
 					position: 'relative',
 					transition: 'all ease .2s',
@@ -148,18 +155,26 @@ module.exports = {
 					// 	},
 					// },
 					h2: {
-						fontFamily: theme('fontFamily.raleway'),
+						fontFamily: theme('fontFamily.betaSansReg'),
 						fontSize: '44px',
 						fontStyle: 'normal',
 						fontWeight: '500',
 						lineHeight: '1.31em',
-						letterSpacing: '.23em',
+						letterSpacing: 'normal',
 						textAlign: 'center',
-						color: theme('colors.primary[500]'),
-						'@media not all and (min-width: 640px)': {
+						color: theme('colors.primary[400]'),
+						'@media not all and (min-width: 960px)': {
 							fontSize: '36px',
 							lineHeight: '46px',
 							marginBottom: '20px',
+						},
+						'@media not all and (min-width: 640px)': {
+							fontSize: '32px',
+							lineHeight: '42px',
+						},
+						'@media not all and (min-width: 480px)': {
+							fontSize: '28px',
+							lineHeight: '36px',
 						},
 					},
 					// h3: {
@@ -180,6 +195,10 @@ module.exports = {
 						letterSpacing: '.23em',
 						lineHeight: '1',
 						color: theme('colors.blue[950]'),
+						'@media not all and (min-width: 960px)': {
+							fontSize: '1.15rem',
+							lineHeight: '1.4rem',
+						},
 						'@media not all and (min-width: 640px)': {
 							fontSize: '1rem',
 							lineHeight: '1.3rem',

@@ -22,24 +22,28 @@
 		}
 	}
 	@font-face {
-		font-family: 'BetaSansNorm Regular';
-		font-style: normal;
-		font-weight: 400;
-		font-display: swap;
+		font-family: 'BetaSans-Normal';
+		src: url('./fonts/BetaSans-Normal.eot');
 		src:
-			url('./fonts/BetaSansNorm Regular.otf') format('opentype'),
-			url('./fonts/BetaSansNorm Regular.woff') format('woff'),
-			url('./fonts/BetaSansNorm Regular.woff2') format('woff2');
+			url('./fonts/BetaSans-Normal.eot?#iefix') format('embedded-opentype'),
+			url('./fonts/BetaSans-Normal.woff') format('woff'),
+			url('./fonts/BetaSans-Normal.woff2') format('woff2'),
+			url('./fonts/BetaSans-Normal.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
 	}
 	@font-face {
 		font-family: 'Jonathan Regular';
-		font-style: normal;
-		font-weight: 400;
-		font-display: swap;
+		src: url('./fonts/Jonathan Regular.eot');
 		src:
-			url('./fonts/Jonathan Regular.otf') format('opentype'),
+			url('/fonts/Jonathan Regular.eot?#iefix') format('embedded-opentype'),
 			url('./fonts/Jonathan Regular.woff') format('woff'),
-			url('./fonts/Jonathan Regular.woff2') format('woff2');
+			url('./fonts/Jonathan Regular.woff2') format('woff2'),
+			url('./fonts/Jonathan Regular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
 	}
 }
 
@@ -48,4 +52,109 @@
 		fadeIn 0.4s,
 		slideInUp 0.5s;
 	animation-fill-mode: forwards;
+}
+
+.swiper {
+	width: 100%;
+}
+
+.swiper-button-prev {
+	left: -50px;
+	@apply max-lg:-left-7 max-md:left-0;
+}
+.swiper-button-next {
+	right: -50px;
+	@apply max-lg:-right-7 max-md:right-0;
+}
+.swiper-main .swiper-button-prev {
+	left: 35px;
+	@apply max-sm:left-4.5 max-md:bottom-8 max-md:top-auto;
+}
+.swiper-main .swiper-button-next {
+	right: 35px;
+	@apply max-sm:right-4.5 max-md:bottom-8 max-md:top-auto;
+}
+.swiper-button-next,
+.swiper-button-prev {
+	@apply text-primary-400;
+}
+
+.swiper-button-prev .slider-line-anim,
+.swiper-button-next .slider-line-anim {
+	stroke-dashoffset: 43;
+	stroke-dasharray: 43;
+	stroke-linejoin: round;
+	stroke-miterlimit: 10;
+	stroke-linecap: butt;
+	-webkit-transform: rotateX(180deg);
+	transform: rotateX(180deg);
+	-webkit-transform-origin: center center;
+	-ms-transform-origin: center center;
+	transform-origin: center center;
+	-webkit-transition: stroke-dashoffset 0.5s
+		cubic-bezier(0.48, 0.57, 0.33, 0.89);
+	transition: stroke-dashoffset 0.5s cubic-bezier(0.48, 0.57, 0.33, 0.89);
+}
+
+.swiper-button-prev:hover .slider-line-anim,
+.swiper-button-next:hover .slider-line-anim {
+	-webkit-transform: translateX(0) rotateX(180deg);
+	transform: translateX(0) rotateX(180deg);
+	stroke-dashoffset: 0;
+	stroke-dasharray: 43;
+	-webkit-transition: stroke-dashoffset 0.5s
+		cubic-bezier(0.48, 0.57, 0.33, 0.89);
+	transition: stroke-dashoffset 0.5s cubic-bezier(0.48, 0.57, 0.33, 0.89);
+}
+.swiper-main p:first-child {
+	@apply opacity-0 relative translate-y-16 transition-all duration-[2s];
+}
+
+.swiper-slide-active p:first-child {
+	@apply opacity-100 translate-y-0 delay-[0.4s];
+}
+
+.swiper-main p:last-child {
+	@apply opacity-0 relative translate-y-0 scale-75 transition-all duration-[2s];
+}
+
+.swiper-main .swiper-slide-prev p:first-child {
+	@apply opacity-0 -translate-y-16;
+}
+
+.swiper-slide-active p:last-child {
+	@apply opacity-100 translate-y-0 scale-100 delay-[0.6s];
+}
+
+.swiper-main .swiper-slide-prev p:last-child {
+	@apply opacity-0 translate-y-16;
+}
+
+.main-pag-item {
+	@apply text-center text-primary-400 relative w-3 h-8 flex items-end justify-center !rounded-none transition-all duration-1000 !opacity-100;
+	background: none;
+}
+.main-pag-item span {
+	@apply transition-all duration-[0.7s];
+}
+
+.main-pag-item::after,
+.main-pag-item::before {
+	content: '';
+	@apply absolute w-full opacity-0 h-px bg-primary-400 -bottom-2 left-1/2 -translate-x-1/2 transition-all duration-[0.5s] delay-75;
+}
+.main-pag-item::after {
+	@apply duration-[0.51s];
+}
+
+.swiper-pagination-bullet-active::before {
+	@apply opacity-100 bottom-0.5;
+}
+
+.swiper-pagination-bullet-active::after {
+	@apply opacity-100 bottom-0;
+}
+
+.swiper-pagination-bullet-active span {
+	@apply pb-2 text-center;
 }
