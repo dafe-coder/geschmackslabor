@@ -10,7 +10,7 @@ module.exports = {
 			xs: '480px', // phones
 			md: '790px', // tables
 			xxl: '1400px', // laptops
-			'3xl': '1560px', // laptops
+			'3xl': '1560px', // big laptops
 			...defaultTheme.screens,
 		},
 		container: {
@@ -30,10 +30,14 @@ module.exports = {
 			jonathanReg: ['"Jonathan Regular"', ...defaultTheme.fontFamily.sans],
 			raleway: ['Raleway', ...defaultTheme.fontFamily.sans],
 			sans: defaultTheme.fontFamily.sans,
+			helvetica: ['Helvetica', ...defaultTheme.fontFamily.sans],
 		},
 		colors: {
 			white: colors.white,
 			black: colors.black,
+			gray: {
+				500: '#3f444b',
+			},
 			primary: {
 				400: '#c9ab81',
 				500: '#A78963',
@@ -44,9 +48,24 @@ module.exports = {
 			},
 		},
 		extend: {
+			animation: {
+				fade: 'fadeIn .3s ease-in-out forwards',
+				fadeOut: 'fadeOut .3s ease-in-out forwards',
+			},
+			keyframes: {
+				fadeIn: {
+					from: { opacity: 0 },
+					to: { opacity: 1 },
+				},
+				fadeOut: {
+					from: { opacity: 1 },
+					to: { opacity: 0 },
+				},
+			},
 			fontSize: {
 				sm: ['0.875rem', '1.4rem'],
 				m: ['0.9375rem', '1.125rem'], // 15px 18px
+				base: ['1rem', '1.8125rem'], // 16px 29px
 				// '2.5xl': ['1.75rem', '1.75rem'], // 28px 28px
 				'5.5xl': ['3.25rem', '5rem'], // 52px 80px
 				'6xl': ['3.875rem', '2.25rem'], // 62px 36px
@@ -54,7 +73,11 @@ module.exports = {
 			letterSpacing: {
 				2: '2px',
 				2.4: '2.4px',
+				5.2: '5.2px',
 				6: '6px',
+			},
+			boxShadow: {
+				'gold-card': '0px 4px 15px rgba(201, 171, 129, 0.1)',
 			},
 			spacing: {
 				4.5: '1.125rem', // 18px
@@ -78,6 +101,7 @@ module.exports = {
 	plugins: [
 		require('tailwindcss'),
 		require('autoprefixer'),
+		require('tailwind-hamburgers'),
 		plugin(function ({ addComponents, addBase, theme }) {
 			addComponents({
 				'.btn': {
@@ -96,7 +120,12 @@ module.exports = {
 					position: 'relative',
 					transition: 'all ease .2s',
 					position: 'relative',
+					textDecoration: 'none',
+					textTransform: 'uppercase',
 					overflow: 'hidden',
+					'&:hover': {
+						color: theme('colors.primary[500]'),
+					},
 					'&:hover:after, &:hover:before': {
 						transform: 'rotate(72deg) scale(1, 1)',
 					},
@@ -136,32 +165,15 @@ module.exports = {
 				},
 			}),
 				addBase({
-					// h1: {
-					// 	fontFamily: theme('fontFamily.robotoSerif'),
-					// 	fontSize: '4.5rem',
-					// 	fontWeight: 700,
-					// 	lineHeight: '7.2rem',
-					// 	letterSpacing: 'normal',
-					// 	textAlign: 'center',
-					// 	color: theme('colors.white'),
-					// 	'@media not all and (min-width: 960px)': {
-					// 		fontSize: '3.5rem',
-					// 		lineHeight: '4.2rem',
-					// 		marginBottom: '20px',
-					// 	},
-					// 	'@media not all and (min-width: 480px)': {
-					// 		fontSize: '2.25rem',
-					// 		lineHeight: '2.6437rem',
-					// 	},
-					// },
-					h2: {
+					h1: {
 						fontFamily: theme('fontFamily.betaSansReg'),
-						fontSize: '44px',
+						fontSize: '2.75rem', // 44px
 						fontStyle: 'normal',
 						fontWeight: '500',
 						lineHeight: '1.31em',
 						letterSpacing: 'normal',
 						textAlign: 'center',
+						textTransform: 'uppercase',
 						color: theme('colors.primary[400]'),
 						'@media not all and (min-width: 960px)': {
 							fontSize: '36px',
@@ -175,6 +187,30 @@ module.exports = {
 						'@media not all and (min-width: 480px)': {
 							fontSize: '28px',
 							lineHeight: '36px',
+						},
+					},
+					h2: {
+						fontFamily: theme('fontFamily.betaSansReg'),
+						fontSize: '2.375rem', // 38px
+						fontStyle: 'normal',
+						fontWeight: '500',
+						lineHeight: '1.21em',
+						letterSpacing: 'normal',
+						textAlign: 'center',
+						textTransform: 'uppercase',
+						color: theme('colors.primary[400]'),
+						'@media not all and (min-width: 960px)': {
+							fontSize: '34px',
+							lineHeight: '44px',
+							marginBottom: '20px',
+						},
+						'@media not all and (min-width: 640px)': {
+							fontSize: '30px',
+							lineHeight: '38px',
+						},
+						'@media not all and (min-width: 480px)': {
+							fontSize: '26px',
+							lineHeight: '32px',
 						},
 					},
 					// h3: {
@@ -191,10 +227,11 @@ module.exports = {
 					// },
 					h4: {
 						fontFamily: theme('fontFamily.betaSansReg'),
-						fontSize: '1.25rem', // 20px
-						letterSpacing: '.23em',
-						lineHeight: '1',
-						color: theme('colors.blue[950]'),
+						fontSize: '1.5rem', // 24px
+						letterSpacing: 'normal',
+						lineHeight: '2.4rem', // 38.4px
+						color: theme('colors.primary[400]'),
+						textTransform: 'uppercase',
 						'@media not all and (min-width: 960px)': {
 							fontSize: '1.15rem',
 							lineHeight: '1.4rem',
@@ -204,16 +241,22 @@ module.exports = {
 							lineHeight: '1.3rem',
 						},
 					},
-					// h6: {
-					// 	fontFamily: theme('fontFamily.robotoSerif'),
-					// 	fontSize: '1.5rem',
-					// 	fontWeight: 600,
-					// 	lineHeight: '160%',
-					// 	'@media not all and (min-width: 640px)': {
-					// 		fontSize: '1.2rem',
-					// 		lineHeight: '1.5rem',
-					// 	},
-					// },
+					h5: {
+						fontFamily: theme('fontFamily.betaSansReg'),
+						fontSize: '1.25rem', // 20px
+						letterSpacing: '.23em',
+						lineHeight: '1',
+						textTransform: 'uppercase',
+						color: theme('colors.primary[400]'),
+						'@media not all and (min-width: 960px)': {
+							fontSize: '1.15rem',
+							lineHeight: '1.4rem',
+						},
+						'@media not all and (min-width: 640px)': {
+							fontSize: '1rem',
+							lineHeight: '1.3rem',
+						},
+					},
 				})
 		}),
 	],

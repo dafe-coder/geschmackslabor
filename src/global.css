@@ -10,7 +10,7 @@
 		-webkit-overflow-scrolling: touch;
 	}
 	body {
-		@apply bg-green-900 text-white tracking-2;
+		@apply bg-green-900 text-white;
 		font-size: 16px;
 		line-height: 29px;
 		-webkit-overflow-scrolling: touch;
@@ -44,6 +44,21 @@
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Helvetica';
+		src: url('./fonts/Helvetica.eot');
+		src:
+			url('/fonts/./fonts/Helvetica.eot?#iefix') format('embedded-opentype'),
+			url('./fonts/Helvetica.woff') format('woff'),
+			url('./fonts/Helvetica.woff2') format('woff2'),
+			url('./fonts/Helvetica.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	a {
+		@apply text-primary-400 transition-colors hover:text-primary-500;
 	}
 }
 
