@@ -48,6 +48,9 @@ module.exports = {
 			},
 		},
 		extend: {
+			transitionDuration: {
+				DEFAULT: '300ms',
+			},
 			animation: {
 				fade: 'fadeIn .3s ease-in-out forwards',
 				fadeOut: 'fadeOut .3s ease-in-out forwards',
@@ -163,6 +166,14 @@ module.exports = {
 					color: theme('colors.white'),
 					'&:hover': {},
 				},
+				'.sub-header': {
+					display: 'block',
+					fontSize: '3.875rem', // 62px
+					lineHeight: '3.875rem',
+					textAlign: 'center',
+					fontFamily: theme('fontFamily.jonathanReg'),
+					color: theme('colors.primary[400]'),
+				},
 			}),
 				addBase({
 					h1: {
@@ -194,7 +205,7 @@ module.exports = {
 						fontSize: '2.375rem', // 38px
 						fontStyle: 'normal',
 						fontWeight: '500',
-						lineHeight: '1.21em',
+						lineHeight: '160%',
 						letterSpacing: 'normal',
 						textAlign: 'center',
 						textTransform: 'uppercase',

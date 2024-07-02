@@ -4,16 +4,19 @@
 
 @layer base {
 	html {
-		font-family: 'Raleway';
 		-webkit-font-smoothing: antialiased; /* Smoothing improvement */
 		-moz-osx-font-smoothing: grayscale;
 		-webkit-overflow-scrolling: touch;
+		@apply font-helvetica;
 	}
 	body {
 		@apply bg-green-900 text-white;
 		font-size: 16px;
 		line-height: 29px;
 		-webkit-overflow-scrolling: touch;
+	}
+	main {
+		@apply min-h-[50vh];
 	}
 	@media screen and (max-width: 640px) {
 		p {
@@ -60,6 +63,12 @@
 	a {
 		@apply text-primary-400 transition-colors hover:text-primary-500;
 	}
+}
+
+svg {
+	will-change: transform;
+	transform-box: fill-box;
+	transform-origin: center;
 }
 
 .animate__fadeInAndSlideInUp {
@@ -172,4 +181,35 @@
 
 .swiper-pagination-bullet-active span {
 	@apply pb-2 text-center;
+}
+.social-footer-icon {
+	@apply relative transition-all duration-300 scale-100 flex justify-center items-center origin-center;
+}
+.social-footer-icon:hover {
+	@apply scale-125;
+}
+.social-footer-icon svg path {
+	@apply transition-all duration-300;
+}
+.social-footer-icon:hover svg path {
+	@apply stroke-primary-400;
+}
+
+.tab-link {
+	@apply after:content-[""] after:w-0 after:transition-all after:bg-primary-400 after:h-full after:-left-4 after:top-0 after:absolute;
+}
+
+.tab-active,
+.tab-link:hover {
+	@apply text-primary-400 after:w-px;
+}
+
+.tab-link svg path {
+	@apply transition-colors;
+}
+
+.tab-active svg path,
+.tab-link:hover svg path {
+	@apply stroke-primary-400;
+	stroke-opacity: 1;
 }

@@ -1,8 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
+	// Rellax Main slider
 	if (document.querySelector('.rellax')) {
 		var rellax = new Rellax('.rellax')
 	}
 
+	// Hover Items
+	try {
+		const listHoverItems = document.querySelectorAll('.animate-list a')
+
+		listHoverItems.forEach((item, index) => {
+			const itemContent = item.querySelector('.animate-item-content')
+			const itemContentHeight = itemContent.scrollHeight
+
+			item.addEventListener('mouseover', e => {
+				listHoverItems.forEach((itemA, indexA) => {
+					if (index !== indexA) {
+						itemA.querySelector('img').style.filter = 'grayscale(1)'
+					}
+				})
+				item.style.marginTop = `-${itemContentHeight + 20}px`
+				console.log(itemContentHeight)
+				itemContent.style.maxHeight = `${itemContentHeight + 20}px`
+				itemContent.style.paddingTop = '20px'
+			})
+			item.addEventListener('mouseleave', () => {
+				listHoverItems.forEach(itemA => {
+					itemA.querySelector('img').style.filter = 'grayscale(0)'
+				})
+				item.style.marginTop = 0
+				itemContent.style.maxHeight = 0
+				itemContent.style.paddingTop = 0
+			})
+		})
+	} catch (error) {}
+	// Hover items end
+
+	// Slider Main
 	if (document.querySelector('.swiper-main')) {
 		const swiper = new Swiper('.swiper-main', {
 			loop: true,
@@ -27,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			},
 		})
 	}
+	// Slider Main end
+
+	// Slider Reviews
 	if (document.querySelector('.swiper-reviews')) {
 		const swiperReviews = new Swiper('.swiper-reviews', {
 			loop: true,
@@ -40,6 +76,74 @@ document.addEventListener('DOMContentLoaded', () => {
 			},
 		})
 	}
+	// Slider Reviews
+
+	// Tabs
+
+	const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
+		const header = document.querySelector(headerSelector),
+			tab = document.querySelectorAll(tabSelector),
+			content = document.querySelectorAll(contentSelector)
+		let showTimer = null
+		let localShowTimer = null
+		let hideTimer = null
+
+		function hideTabContent() {
+			clearTimeout(hideTimer)
+			content.forEach(item => {
+				item.classList.remove('animate-fade')
+				item.classList.add('animate-fadeOut')
+				hideTimer = setTimeout(() => {
+					item.classList.add('hidden')
+				}, 300)
+			})
+			tab.forEach(item => {
+				item.classList.remove(activeClass)
+			})
+		}
+
+		function showTabContent(i = 0) {
+			clearTimeout(localShowTimer)
+			content[i].classList.remove('animate-fadeOut')
+			content[i].classList.remove('hidden')
+			localShowTimer = setTimeout(() => {
+				content[i].classList.add('animate-fade')
+			}, 10)
+			tab[i].classList.add(activeClass)
+		}
+
+		hideTabContent()
+		setTimeout(() => {
+			showTabContent()
+		}, 310)
+
+		header.addEventListener('click', e => {
+			const target = e.target
+			e.preventDefault()
+			if (
+				target &&
+				(target.classList.contains(tabSelector.replace(/\./, '')) ||
+					target.parentNode.classList.contains(tabSelector.replace(/\./, '')))
+			) {
+				tab.forEach((item, i) => {
+					if (
+						target == item ||
+						(target.parentNode == item && !item.classList.contains(activeClass))
+					) {
+						clearTimeout(showTimer)
+						hideTabContent()
+						showTimer = setTimeout(() => {
+							showTabContent(i)
+						}, 310)
+					}
+				})
+			}
+		})
+	}
+	if (document.querySelector('.tab-nav')) {
+		tabs('.tab-nav', '.tab-link', '.tab-content', 'tab-active')
+	}
+	// Tabs end
 
 	// Menu
 	const hamburger = document.getElementById('menu-hamburger')
@@ -97,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				bgItem.style.opacity = 1
 			})
 			item.addEventListener('mouseleave', e => {
-				bgItem.style.opacity = 0 // Adjust to default width
+				bgItem.style.opacity = 0
 			})
 		})
 	}
@@ -145,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			menuDropdownBody.classList.add('animate-fade')
 			setTimeout(() => {
 				isAnimatingMobile = false
-			}, 300) // Длительность анимации открытия
+			}, 300)
 		}
 	}
 
@@ -196,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function initMobileMenu() {
-		removeEventListeners() // Delete all existing handlers
+		removeEventListeners()
 		menuDropdown.forEach(item => {
 			const menuDropdownBody = item
 				.closest('li')
@@ -211,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function initDesktopMenu() {
 		headerMobile.classList.remove('animate-fadeOut')
-		removeEventListeners() // Delete all existing handlers
+		removeEventListeners()
 		menuDropdown.forEach(item => {
 			const menuDropdownBody = item
 				.closest('li')
@@ -241,14 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	// Initialization on page load
 	if (hasReached1024) {
 		initMobileMenu()
 	} else {
 		initDesktopMenu()
 	}
 
-	// Add resize event handler
 	window.addEventListener('resize', onResize)
 
 	const handleClickOutside = event => {
@@ -261,4 +363,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 	document.body.addEventListener('click', handleClickOutside)
 	headerMobile.classList.add('max-lg:hidden')
+	// Menu end
 })
