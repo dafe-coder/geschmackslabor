@@ -1972,6 +1972,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 12.5rem;
   font-size: 0.875rem;
   font-weight: 300;
   line-height: 2em;
@@ -2265,6 +2266,10 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -2315,6 +2320,10 @@ a:hover {
 
 .mt-24\.5 {
   margin-top: 100px;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .mt-4 {
@@ -2462,6 +2471,10 @@ a:hover {
   height: calc(100vh - 6.375rem);
 }
 
+.h-\[calc\(100vh_-_89px\)\] {
+  height: calc(100vh - 89px);
+}
+
 .h-full {
   height: 100%;
 }
@@ -2482,6 +2495,10 @@ a:hover {
   max-height: 31.2rem;
 }
 
+.max-h-\[39\.37rem\] {
+  max-height: 39.37rem;
+}
+
 .min-h-\[27\.75rem\] {
   min-height: 27.75rem;
 }
@@ -2490,20 +2507,8 @@ a:hover {
   min-height: 500px;
 }
 
-.min-h-\[8\.1rem\] {
-  min-height: 8.1rem;
-}
-
-.min-h-24 {
-  min-height: 6rem;
-}
-
-.min-h-24\.5 {
-  min-height: 100px;
-}
-
-.min-h-32 {
-  min-height: 8rem;
+.min-h-\[8\.8rem\] {
+  min-height: 8.8rem;
 }
 
 .w-1\/2 {
@@ -2563,12 +2568,20 @@ a:hover {
   max-width: 27.1rem;
 }
 
+.max-w-\[31\.4375rem\] {
+  max-width: 31.4375rem;
+}
+
 .max-w-\[35\.9375rem\] {
   max-width: 35.9375rem;
 }
 
 .max-w-\[37\.5rem\] {
   max-width: 37.5rem;
+}
+
+.max-w-\[37\.87rem\] {
+  max-width: 37.87rem;
 }
 
 .max-w-\[47\.75rem\] {
@@ -2579,20 +2592,16 @@ a:hover {
   max-width: 57.3%;
 }
 
+.max-w-\[60\.1rem\] {
+  max-width: 60.1rem;
+}
+
 .max-w-\[960px\] {
   max-width: 960px;
 }
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-\[60\.1rem\] {
-  max-width: 60.1rem;
-}
-
-.max-w-60 {
-  max-width: 15rem;
 }
 
 .flex-shrink {
@@ -2613,6 +2622,10 @@ a:hover {
 
 .grow {
   flex-grow: 1;
+}
+
+.basis-\[48\%\] {
+  flex-basis: 48%;
 }
 
 .table-auto {
@@ -3232,6 +3245,10 @@ a:hover {
   gap: 2.25rem;
 }
 
+.gap-\[4\%\] {
+  gap: 4%;
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -3280,6 +3297,12 @@ a:hover {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
@@ -3290,12 +3313,6 @@ a:hover {
   --tw-space-y-reverse: 0;
   margin-top: calc(2.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2.25rem * var(--tw-space-y-reverse));
-}
-
-.space-y-6 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
@@ -4053,8 +4070,24 @@ a:hover {
   padding-bottom: 0.625rem;
 }
 
+.pb-24 {
+  padding-bottom: 6rem;
+}
+
+.pb-24\.5 {
+  padding-bottom: 100px;
+}
+
 .pb-5 {
   padding-bottom: 1.25rem;
+}
+
+.pb-7 {
+  padding-bottom: 1.75rem;
+}
+
+.pb-7\.5 {
+  padding-bottom: 1.875rem;
 }
 
 .pl-4 {
@@ -4115,14 +4148,6 @@ a:hover {
 
 .pt-9 {
   padding-top: 2.25rem;
-}
-
-.pb-24 {
-  padding-bottom: 6rem;
-}
-
-.pb-24\.5 {
-  padding-bottom: 100px;
 }
 
 .text-left {
@@ -5087,6 +5112,10 @@ svg {
   stroke-opacity: 1;
 }
 
+/* .pswp__item img {
+	@apply object-cover;
+} */
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -5169,6 +5198,11 @@ svg {
 .after\:w-5::after {
   content: var(--tw-content);
   width: 1.25rem;
+}
+
+.after\:bg-black\/35::after {
+  content: var(--tw-content);
+  background-color: rgb(0 0 0 / 0.35);
 }
 
 .after\:bg-black\/40::after {
@@ -5266,6 +5300,11 @@ svg {
 .hover\:before\:text-center:hover::before {
   content: var(--tw-content);
   text-align: center;
+}
+
+.hover\:after\:opacity-100:hover::after {
+  content: var(--tw-content);
+  opacity: 1;
 }
 
 .focus\:border-primary-400:focus {
@@ -5481,6 +5520,10 @@ svg {
     order: 2;
   }
 
+  .max-md\:mb-10 {
+    margin-bottom: 2.5rem;
+  }
+
   .max-md\:mb-16 {
     margin-bottom: 4rem;
   }
@@ -5509,10 +5552,6 @@ svg {
     margin-top: 2rem;
   }
 
-  .max-md\:h-32 {
-    height: 8rem;
-  }
-
   .max-md\:min-h-48 {
     min-height: 12rem;
   }
@@ -5527,6 +5566,10 @@ svg {
 
   .max-md\:max-w-full {
     max-width: 100%;
+  }
+
+  .max-md\:basis-full {
+    flex-basis: 100%;
   }
 
   .max-md\:grid-cols-1 {
@@ -5583,6 +5626,14 @@ svg {
     padding-bottom: 100px;
   }
 
+  .max-md\:pb-12 {
+    padding-bottom: 3rem;
+  }
+
+  .max-md\:pb-12\.5 {
+    padding-bottom: 3.125rem;
+  }
+
   .max-md\:pl-0 {
     padding-left: 0px;
   }
@@ -5607,14 +5658,6 @@ svg {
     padding-top: 100px;
   }
 
-  .max-md\:pb-12 {
-    padding-bottom: 3rem;
-  }
-
-  .max-md\:pb-12\.5 {
-    padding-bottom: 3.125rem;
-  }
-
   .max-md\:text-center {
     text-align: center;
   }
@@ -5637,6 +5680,10 @@ svg {
 
   .max-sm\:\!right-0 {
     right: 0px !important;
+  }
+
+  .max-sm\:mb-5 {
+    margin-bottom: 1.25rem;
   }
 
   .max-sm\:mb-8 {

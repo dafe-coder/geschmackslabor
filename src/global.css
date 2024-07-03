@@ -213,3 +213,7 @@ svg {
 	@apply stroke-primary-400;
 	stroke-opacity: 1;
 }
+
+/* .pswp__item img {
+	@apply object-cover;
+} */

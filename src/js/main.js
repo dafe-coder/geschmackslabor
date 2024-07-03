@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				listHoverItems.forEach((itemA, indexA) => {
 					if (index !== indexA) {
 						itemA.querySelector('img').style.filter = 'grayscale(1)'
+						itemA.querySelector('img').style.opacity = '0.3'
 					}
 				})
+				item.querySelector('img').style.opacity = '1'
 				item.style.marginTop = `-${itemContentHeight + 20}px`
 				console.log(itemContentHeight)
 				itemContent.style.maxHeight = `${itemContentHeight + 20}px`
@@ -25,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 			item.addEventListener('mouseleave', () => {
 				listHoverItems.forEach(itemA => {
+					itemA.querySelector('img').style.opacity = '1'
 					itemA.querySelector('img').style.filter = 'grayscale(0)'
 				})
 				item.style.marginTop = 0

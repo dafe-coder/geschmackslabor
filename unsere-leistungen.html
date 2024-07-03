@@ -83,16 +83,16 @@
 						<ul
 							class='menu-dropdown-body transition-all opacity-0 duration-500 p-5 pt-10 -ml-5 space-y-3 bg-green-900 hidden absolute top-full min-w-[calc(100%_+_40px)]'>
 							<li>
-								<a href="#" class='text-white normal-case text-sm hover:text-primary-400'>Catering</a>
+								<a href="./catering.html" class='text-white normal-case text-sm hover:text-primary-400'>Catering</a>
 							</li>
 							<li>
 								<a href="#" class='text-white normal-case text-sm hover:text-primary-400'>Catering Messeshop</a>
 							</li>
 							<li>
-								<a href="#" class='text-white normal-case text-sm hover:text-primary-400'>Events</a>
+								<a href="./events.html" class='text-white normal-case text-sm hover:text-primary-400'>Events</a>
 							</li>
 							<li>
-								<a href="#" class='text-white normal-case text-sm hover:text-primary-400'>Equipment</a>
+								<a href="./equipment.html" class='text-white normal-case text-sm hover:text-primary-400'>Equipment</a>
 							</li>
 							<li>
 								<a href="./locations.html" class='text-white normal-case text-sm hover:text-primary-400'>Locations</a>
@@ -113,7 +113,7 @@
 		</div>
 	</header>
 	<main>
-		<section class='pt-24.5 pb-12.5'>
+		<section class='pt-24.5'>
 			<div class="container">
 				<span class='sub-header mb-3'>Leistungsportfolio</span>
 				<h2>Reich an Erfahrung</h2>
@@ -178,7 +178,7 @@
 				</div>
 			</div>
 		</section>
-		<section class='py-24.5 max-md:py-12.5'>
+		<section class='pt-24.5 max-md:pt-12.5'>
 			<div class="container">
 				<span class='sub-header mb-3'>Weitere Leistungen
 				</span>
@@ -259,22 +259,24 @@
 		</section>
 		<section class="py-24.5 max-md:py-12.5">
 			<div class="container">
-				<div class="grid grid-cols-2 bg-primary-400/5 max-md:grid-cols-1">
-					<div class="p-12.5 py-16 text-left max-md:order-2 border border-primary-400 border-r-0 max-md:border-r">
-						<h4 class="text-primary-400 text-2xl tracking-5.2 mb-6 font-medium">CATERING FÜR DEN <br> PERFEKTEN TAG</h4>
-						<p class="font-helvetica">Planen Sie Ihre Hochzeit und träumen von einem perfekten Cateringpartner, der
-							Ihren
-							einzigartigen Tag
-							unvergesslich macht und über den Ihre Gäste noch lange sprechen werden? Wir freuen uns darauf, Ihre
-							Visionen zu verwirklichen! Kontaktieren Sie uns jetzt, damit wir gemeinsam alle Details besprechen können.
-						</p>
-						<button class="btn btn-outline mt-12.5 font-helvetica font-medium">Jetzt Kontakt
-							aufnehmen</button>
+				<div class='flex justify-between'>
+					<div class='max-w-[37.87rem] w-full text-center flex flex-col justify-center'>
+						<span class='sub-header mb-3'>Kontakt mit uns</span>
+						<h2>SIE HABEN FRAGEN<br>ZU UNSEREN LEISTUNGEN?</h2>
+						<p class='mt-3'>Nehmen Sie gerne mit uns Kontakt auf.<br>
+							Wir freuen uns auf Ihre Nachricht.</p>
 					</div>
-					<div class="overflow-hidden group min-h-[27.75rem] max-md:order-1">
-						<div
-							class="relative size-full bg-[url(&quot;https://geschmackslabor.36-5.de/wp-content/uploads/2024/06/GL-GRUPPENFOTOS-VERTRIEB_SW-100x1100-1.jpg&quot;)] bg-cover bg-top after:content-[&quot;&quot;] after:absolute after:left-0 after:top-0 after:bg-black/50 after:opacity-0 after:size-full after:transition-opacity after:duration-1000 ease-in-out transition-transform duration-1000 group-hover:scale-[1.15] group-hover:after:opacity-100">
-						</div>
+					<div class='max-w-[31.4375rem]'>
+						<form class='space-y-5 max-w-[35.9375rem] w-full max-lg:max-w-full' action='#' method='POST'>
+							<input type="text" placeholder='Ihr Name' required
+								class='border border-white/50 w-full p-5 bg-[transparent] text-base transition-all focus:border-primary-400 active:border-primary-400 outline-none leading-5'>
+							<input type="text" placeholder='Ihre E-Mailadresse' required
+								class='border border-white/50 w-full p-5 bg-[transparent] text-base transition-all focus:border-primary-400 active:border-primary-400 outline-none leading-5'>
+							<textarea
+								class='border border-white/50 w-full p-5 bg-[transparent] text-base min-h-[8.8rem] transition-all focus:border-primary-400 active:border-primary-400 outline-none leading-5'
+								name="text" id="text" placeholder='Ihre Nachricht für uns' required></textarea>
+							<button class='btn btn-outline'>Senden</button>
+						</form>
 					</div>
 				</div>
 			</div>

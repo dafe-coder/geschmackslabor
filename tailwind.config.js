@@ -69,7 +69,6 @@ module.exports = {
 				sm: ['0.875rem', '1.4rem'],
 				m: ['0.9375rem', '1.125rem'], // 15px 18px
 				base: ['1rem', '1.8125rem'], // 16px 29px
-				// '2.5xl': ['1.75rem', '1.75rem'], // 28px 28px
 				'5.5xl': ['3.25rem', '5rem'], // 52px 80px
 				'6xl': ['3.875rem', '2.25rem'], // 62px 36px
 			},
@@ -87,17 +86,7 @@ module.exports = {
 				7.5: '1.875rem', // 18px
 				12.5: '3.125rem', // 50px
 				14.5: '3.75rem', // 60px
-				// 13: '3.25rem', // 52px
-				// 15.5: '3.875rem', // 62px
-				// 16.5: '4.25rem', // 68px
-				// 17: '4.5rem', // 72px
-				// 22: '5.625rem', // 90px
 				24.5: '100px', // 100px
-				// 25: '105px', // 105px
-				// 30: '7.5625rem', // 121px
-				// 34: '8.5rem', // 136px
-				190: '50rem', // 800px
-				200: '56.25rem', // 900px
 			},
 		},
 	},
@@ -113,6 +102,7 @@ module.exports = {
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
+					minWidth: '12.5rem', // 200px
 					fontSize: '0.875rem', // 14px
 					fontWeight: 300,
 					lineHeight: '2em',
@@ -224,18 +214,6 @@ module.exports = {
 							lineHeight: '32px',
 						},
 					},
-					// h3: {
-					// 	fontFamily: theme('fontFamily.robotoSerif'),
-					// 	fontSize: '3rem',
-					// 	textAlign: 'left',
-					// 	fontWeight: 600,
-					// 	lineHeight: '140%',
-					// 	color: theme('colors.dark'),
-					// 	'@media not all and (min-width: 640px)': {
-					// 		fontSize: '26px',
-					// 		lineHeight: '30px',
-					// 	},
-					// },
 					h4: {
 						fontFamily: theme('fontFamily.betaSansReg'),
 						fontSize: '1.5rem', // 24px
