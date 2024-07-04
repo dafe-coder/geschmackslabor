@@ -61,7 +61,7 @@
 		font-display: swap;
 	}
 	a {
-		@apply text-primary-400 transition-colors hover:text-primary-500;
+		@apply text-primary-400 transition-all duration-150 hover:text-primary-500;
 	}
 }
 
@@ -217,3 +217,21 @@ svg {
 /* .pswp__item img {
 	@apply object-cover;
 } */
+.expand > a {
+	@apply !text-primary-400 hover:!text-primary-400;
+}
+.expand a > span span:first-child {
+	@apply rotate-90 bg-primary-500;
+}
+
+.expand a > span span:last-child {
+	@apply bg-primary-500;
+}
+
+.expand {
+	@apply border-primary-400;
+}
+
+.expand-ul > li:not(.expand) > a {
+	@apply duration-500 max-lg:scale-75 max-lg:opacity-40;
+}

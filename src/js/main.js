@@ -79,7 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
 			},
 		})
 	}
-	// Slider Reviews
+
+	// Slider Referenzen
+	if (document.querySelector('.swiper-referenzen')) {
+		const swiperReviews = new Swiper('.swiper-referenzen', {
+			loop: true,
+			speed: 1000,
+			pagination: {
+				el: '.swiper-pagination',
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		})
+	}
+	// Slider Referenzen
 
 	// Tabs
 
@@ -98,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				item.classList.add('animate-fadeOut')
 				hideTimer = setTimeout(() => {
 					item.classList.add('hidden')
-				}, 300)
+				}, 500)
 			})
 			tab.forEach(item => {
 				item.classList.remove(activeClass)
@@ -165,10 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			setTimeout(() => {
 				headerMobile.classList.add('max-lg:hidden')
 				isAnimating = false
-			}, 300)
+			}, 500)
 		} else {
 			document.querySelector('body').style.overflow = 'hidden'
 			hamburger.classList.add('tham-active')
+			headerMobile.classList.remove('max-lg:hidden')
 			headerMobile.classList.remove('max-lg:hidden')
 			headerMobile.classList.remove('animate-fadeOut')
 			setTimeout(() => {
@@ -178,14 +194,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 
-	const hideMenuBody = () => {
+	const hideMenuBody = (itemActive = null, bodyActive = null) => {
 		menuDropdown.forEach(item => {
-			item.classList.remove('expand')
+			if (itemActive !== item) {
+				item.classList.remove('expand')
+				item.closest('ul').classList.remove('expand-ul')
+			}
 		})
 		menuBody.forEach(item => {
-			item.classList.add('hidden')
-			item.classList.remove('animate-fade')
-			item.classList.remove('animate-fadeOut')
+			if (bodyActive !== item) {
+				item.classList.remove('animate-fade')
+				item.classList.remove('animate-fadeOut')
+				item.style.maxHeight = '0'
+				item.style.paddingBottom = 0
+				setTimeout(() => {
+					item.classList.add('hidden')
+				}, 500)
+			}
 		})
 	}
 
@@ -219,40 +244,48 @@ document.addEventListener('DOMContentLoaded', () => {
 	function handleMobileClick(e) {
 		if (isAnimatingMobile) return
 		isAnimatingMobile = true
+		if (!e.target.closest('.menu-dropdown-body')) {
+			e.preventDefault()
+		}
 
-		e.preventDefault()
 		const item = e.currentTarget
 		const menuDropdownBody = item
 			.closest('li')
 			.querySelector('.menu-dropdown-body')
 		const isHidden = menuDropdownBody.classList.contains('hidden')
-
 		if (item.classList.contains('expand')) {
+			item.closest('ul').classList.remove('expand-ul')
 			item.classList.remove('expand')
-			menuDropdownBody.style.maxHeight = menuDropdownBody.scrollHeight + 'px'
+			menuDropdownBody.style.maxHeight =
+				menuDropdownBody.scrollHeight + 20 + 'px'
+			menuDropdownBody.style.paddingBottom = 20 + 'px'
 			menuDropdownBody.classList.remove('animate-fade')
 			menuDropdownBody.classList.add('animate-fadeOut')
 			setTimeout(() => {
 				menuDropdownBody.style.maxHeight = '0'
+				menuDropdownBody.style.paddingBottom = 0
 				setTimeout(() => {
 					menuDropdownBody.classList.add('hidden')
 					isAnimatingMobile = false
-				}, 300)
+				}, 500)
 			}, 10)
 		} else {
+			hideMenuBody(item, menuDropdownBody)
 			item.classList.add('expand')
+			item.closest('ul').classList.add('expand-ul')
 			if (isHidden) {
 				menuDropdownBody.classList.remove('hidden')
 			}
 			menuDropdownBody.style.maxHeight = '0'
-			const heightMenuDropdownBody = menuDropdownBody.scrollHeight + 'px'
-			menuDropdownBody.style.maxHeight = heightMenuDropdownBody
+			const heightMenuDropdownBody = menuDropdownBody.scrollHeight
+			menuDropdownBody.style.maxHeight = heightMenuDropdownBody + 20 + 'px'
+			menuDropdownBody.style.paddingBottom = 20 + 'px'
 			menuDropdownBody.classList.remove('hidden')
 			menuDropdownBody.classList.remove('animate-fadeOut')
 			menuDropdownBody.classList.add('animate-fade')
 			setTimeout(() => {
 				isAnimatingMobile = false
-			}, 300)
+			}, 500)
 		}
 	}
 
@@ -291,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		menuDropdownBody.classList.add('animate-fadeOut')
 		hideTimeout = setTimeout(() => {
 			menuDropdownBody.classList.add('hidden')
-		}, 300)
+		}, 500)
 	}
 
 	function removeEventListeners() {
