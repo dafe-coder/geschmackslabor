@@ -146,6 +146,10 @@ module.exports = {
 						transform: 'rotate(72deg) scale(1, 0)',
 						transition: 'all ease .5s',
 					},
+					'@media not all and (min-width: 640px)': {
+						padding: '0 20px',
+						width: '100% !important',
+					},
 					'@media not all and (min-width: 480px)': {
 						fontSize: '16px',
 						lineHeight: '20px',
@@ -159,10 +163,22 @@ module.exports = {
 				'.sub-header': {
 					display: 'block',
 					fontSize: '3.875rem', // 62px
-					lineHeight: '3.875rem',
+					lineHeight: '3.875rem', // 62px
 					textAlign: 'center',
 					fontFamily: theme('fontFamily.jonathanReg'),
 					color: theme('colors.primary[400]'),
+					'@media not all and (min-width: 960px)': {
+						fontSize: '3.5rem', // 56px
+						lineHeight: '3.5rem', // 56px
+					},
+					'@media not all and (min-width: 640px)': {
+						fontSize: '44px',
+						lineHeight: '44px',
+					},
+					'@media not all and (min-width: 640px)': {
+						fontSize: '44px',
+						lineHeight: '44px',
+					},
 				},
 			}),
 				addBase({

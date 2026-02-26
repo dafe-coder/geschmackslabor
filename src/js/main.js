@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				item.classList.add('animate-fadeOut')
 				hideTimer = setTimeout(() => {
 					item.classList.add('hidden')
-				}, 500)
+				}, 300)
 			})
 			tab.forEach(item => {
 				item.classList.remove(activeClass)
@@ -193,6 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			}, 10)
 		}
 	})
+	let hasReached1024 = window.matchMedia(
+		'only screen and (max-width: 1024px)'
+	).matches
 
 	const hideMenuBody = (itemActive = null, bodyActive = null) => {
 		menuDropdown.forEach(item => {
@@ -205,8 +208,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (bodyActive !== item) {
 				item.classList.remove('animate-fade')
 				item.classList.remove('animate-fadeOut')
-				item.style.maxHeight = '0'
-				item.style.paddingBottom = 0
+				if (hasReached1024) {
+					item.style.maxHeight = '0'
+					item.style.paddingBottom = 0
+				}
+
 				setTimeout(() => {
 					item.classList.add('hidden')
 				}, 500)
@@ -234,10 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 	initMenuAnimate()
-
-	let hasReached1024 = window.matchMedia(
-		'only screen and (max-width: 1024px)'
-	).matches
 
 	let isAnimatingMobile = false
 
@@ -294,12 +296,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function handleDesktopMouseEnter(e) {
 		e.preventDefault()
-		hideMenuBody()
 		const item = e.currentTarget
 		const menuDropdownBody = item
 			.closest('li')
 			.querySelector('.menu-dropdown-body')
 
+		hideMenuBody(item, menuDropdownBody)
 		clearTimeout(hideTimeout)
 		menuDropdownBody.classList.remove('animate-fadeOut')
 		menuDropdownBody.classList.remove('hidden')
@@ -324,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		menuDropdownBody.classList.add('animate-fadeOut')
 		hideTimeout = setTimeout(() => {
 			menuDropdownBody.classList.add('hidden')
-		}, 500)
+		}, 300)
 	}
 
 	function removeEventListeners() {
@@ -343,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				.querySelector('.menu-dropdown-body')
 			if (menuDropdownBody) {
 				menuDropdownBody.classList.add('hidden')
-				menuDropdownBody.style.maxHeight = 0
 				item.addEventListener('click', handleMobileClick)
 			}
 		})
